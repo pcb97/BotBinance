@@ -378,7 +378,7 @@ class MovingaverageStrategy(Strategy):
 
         if tick_type == "new_candle":
             signal_result = self._check_signal()
-            if signal_result in [1, -1] and self.executar:
+            if signal_result in [1, -1] and self.client.executar:
                 self._open_position(signal_result)
 
     def grafico(self,ultimosDados = 10,candles=True):

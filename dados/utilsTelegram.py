@@ -48,7 +48,7 @@ class BotTelegram:
 					binance.executar = False
 					self.sendMessage("ROBO DESATIVADO COM SUCESSO",message.message_id)
 
-				elif 'desativar' in mensagem:
+				elif 'ativar' in mensagem:
 					binance.executar = False
 					self.sendMessage("ROBO ATIVADO COM SUCESSO",message.message_id)
 

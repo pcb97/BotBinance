@@ -1,2 +1,11 @@
-pip install kaleido==0.1.0post1
-pip install unidecode
+sudo yum install -y python
+sudo yum install -y pip
+sudo yum install -y git
+pip install pandas
+pip install numpy
+pip install pyTelegramBotAPI==4.20.0
+pip install kaleido
+pip install unidecode==1.3.8
+pip install openpyxl==3.1.3
+pip install plotly==5.22.0
+git clone https://github.com/pcb97/BotBinance.git

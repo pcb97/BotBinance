@@ -1,0 +1,2 @@
+pip install kaleido==0.1.0post1
+pip install unidecode

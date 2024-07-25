@@ -11,7 +11,7 @@ class BotTelegram:
 
 	def GetMessageUser(self,binance,i=0):
 		try:
-			comandos = ['/Grafico - Pode adicionar "-x" para pegar outros periodos x. EX: Grafico-50','/Posicoes - Ver posições abertas','/Acumulado - Mostra o acumulado da moeda','/Parâmetros', '/Desativar', '/Ativar', '/Log', '/Comandos']
+			comandos = ['/Grafico - Pode adicionar "-x" para pegar outros periodos x. EX: Grafico-50','/Posicoes - Ver posições abertas','/Acumulado - Mostra o acumulado da moeda','/Parametros', '/Desativar', '/Ativar', '/Log', '/Comandos']
 			binance._add_log("TELEGRAM PRONTO")
 			if i==0:
 				self.sendMessage('BOT BINANCE INICIADO\nLISTA DE COMANDOS DISPONIVEIS:\n'+"\n".join(comandos))

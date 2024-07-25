@@ -454,7 +454,15 @@ class BinanceClient:
                     self._add_log(f"CANCELANDO POSIÇÕES ANTERIORES PARA {posicao['symbol']} N{i+1}")
 
     def lerDadosEntrada(self):
-        dados = pd.read_excel("DadosEntrada.xlsx",sheet_name='DADOS').to_dict(orient='records')
+        try:
+            import boto3
+            from io import BytesIO
+            s3 = boto3.client('s3')
+            excel = pd.read_excel(BytesIO(s3.get_object(Bucket = 'binance-trade', Key = 'DadosEntrada.xlsx')['Body'].read()))
+            print("DADOS DO S3")
+        except:
+            dados = pd.read_excel("DadosEntrada.xlsx",sheet_name='DADOS').to_dict(orient='records')
+            print("DADOS LOCAL")
         self.strategies = {}
         for i,info in enumerate(dados): #CRIA AS ESTRATEGIAS A PARTIR DO EXCEL
             contrato = self.contracts[info['Contrato']]

@@ -11,7 +11,7 @@ class BotTelegram:
 
 	def GetMessageUser(self,binance,i=0):
 		try:
-			comandos = ['/Grafico - Pode adicionar "-x" para pegar outros periodos x. EX: Grafico-50','/Posicoes - Ver posições abertas','/Acumulado - Mostra o acumulado da moeda', '/Desativar', '/Ativar', '/Log', '/Comandos']
+			comandos = ['/Grafico - Pode adicionar "-x" para pegar outros periodos x. EX: Grafico-50','/Posicoes - Ver posições abertas','/Acumulado - Mostra o acumulado da moeda','/Parâmetros', '/Desativar', '/Ativar', '/Log', '/Comandos']
 			binance._add_log("TELEGRAM PRONTO")
 			if i==0:
 				self.sendMessage('BOT BINANCE INICIADO\nLISTA DE COMANDOS DISPONIVEIS:\n'+"\n".join(comandos))
@@ -44,6 +44,12 @@ class BotTelegram:
 						for trade in strategia.trades:
 							acumulado+=trade.pnl
 						self.sendMessage(f"Acumulado {strategia.contract.symbol}:\n{round(acumulado,5)}")
+				
+				elif 'parametros' in mensagem:
+					for strategia in  binance.strategies.values():
+						msg = f"MOEDA:{strategia.contract.symbol}\nTimeFrame: {strategia.tf}\n% Balance: {strategia.balance_pct}\nTakeProfit: {strategia.take_profit}\nStopLoss: {strategia.stop_loss}\nEmaFast: {strategia.other_params['ema_fast']}\nEmaSlow: {strategia.other_params['ema_slow']}\nAtrPeriod: {strategia.other_params['atr_period']}\nAtrMultiplier: {strategia.other_params['atr_multiplier']}"
+						self.sendMessage(msg,message.message_id)
+	
 				elif 'desativar' in mensagem:
 					binance.executar = False
 					self.sendMessage("ROBO DESATIVADO COM SUCESSO",message.message_id)

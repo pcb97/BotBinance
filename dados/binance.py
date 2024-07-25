@@ -461,7 +461,7 @@ class BinanceClient:
             excel = pd.read_excel(BytesIO(s3.get_object(Bucket = 'binance-trade', Key = 'DadosEntrada.xlsx')['Body'].read()))
             print("DADOS DO S3")
         except:
-            print(traceback.format_exc()
+            print(traceback.format_exc())
             dados = pd.read_excel("DadosEntrada.xlsx",sheet_name='DADOS').to_dict(orient='records')
             print("DADOS LOCAL")
         self.strategies = {}

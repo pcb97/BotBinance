@@ -8,6 +8,8 @@ pip install kaleido
 pip install unidecode==1.3.8
 pip install openpyxl==3.1.3
 pip install plotly==5.22.0
+pip install boto3
+
 git clone https://github.com/pcb97/BotBinance.git
 
 
@@ -31,3 +33,6 @@ sudo systemctl daemon-reload
 sudo systemctl restart meu-script.service
 
 sudo journalctl -u meu-script.service
+
+criar permissao s3
+alterar credenciais no rodar.py

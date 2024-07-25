@@ -458,7 +458,7 @@ class BinanceClient:
             import boto3
             from io import BytesIO
             s3 = boto3.client('s3')
-            excel = pd.read_excel(BytesIO(s3.get_object(Bucket = 'binance-trade', Key = 'DadosEntrada.xlsx')['Body'].read()))
+            dados = pd.read_excel(BytesIO(s3.get_object(Bucket = 'binance-trade', Key = 'DadosEntrada.xlsx')['Body'].read()))
             print("DADOS DO S3")
         except:
             print(traceback.format_exc())

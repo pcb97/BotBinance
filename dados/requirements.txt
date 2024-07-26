@@ -1,0 +1,37 @@
+sudo yum install -y python
+sudo yum install -y pip
+sudo yum install -y git
+pip install pandas
+pip install numpy
+pip install pyTelegramBotAPI==4.20.0
+pip install kaleido
+pip install unidecode==1.3.8
+pip install openpyxl==3.1.3
+pip install plotly==5.22.0
+pip install boto3
+
+git clone https://github.com/pcb97/BotBinance.git
+
+
+sudo nano /etc/systemd/system/meu-script.service
+ - ADICIONAR NA TELA QUE VAI ABRIR:
+===============================================
+[Unit]
+Description=Meu Script Python
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /BotBinance/rodar.py
+Restart=always
+User=ec2-user
+WorkingDirectory=/home/ec2-user
+
+[Install]
+WantedBy=multi-user.target
+==================================================
+
+sudo systemctl daemon-reload
+sudo systemctl restart meu-script.service
+sudo journalctl -u meu-script.service
+nano BotBinance/rodar.py
+ - alterar credenciais ta tela que vai abrir

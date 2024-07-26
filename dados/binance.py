@@ -285,7 +285,7 @@ class BinanceClient:
         data['timestamp'] = self.timestamp()
         data['signature'] = self._generate_signature(data)
         
-        LOG = "\n"+"="*100+f'\nCRIANDO ORDEM {operacao} PARA {data['symbol']}\nLADO: {data['side']}\nQUANTIDADE: {data['quantity']}\nTIPO: {tipo}\nHORA: {datetime.datetime.today():%H:%M:%S %d/%m/%Y}\n'
+        LOG = "\n"+"="*100+f"\nCRIANDO ORDEM {operacao} PARA {data['symbol']}\nLADO: {data['side']}\nQUANTIDADE: {data['quantity']}\nTIPO: {tipo}\nHORA: {datetime.datetime.today():%H:%M:%S %d/%m/%Y}\n"
         if price:
             LOG+=f"PREÇO: {price}\n"
         if self.futures:

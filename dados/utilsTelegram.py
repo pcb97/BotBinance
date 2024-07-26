@@ -67,9 +67,9 @@ class BotTelegram:
 				elif 'log' in mensagem:
 					self.sendFile(open("info.log",'rb').read(),"Arquivo de logs","log.txt",message.message_id)
 				elif 'comandos' in mensagem:
-					self.sendMessage('LISTA DE COMANDOS DISPONIVEIS:\n'+"\n".join(comandos),message.message_id)
+					self.sendMessage('LISTA DE COMANDOS DISPONIVEIS:\n'+"\n".join(comandos)+"\nEnvie um arquivo 'DadosEntrada.xlsx' para atualizar as estratégias",message.message_id)
 				else:
-					self.sendMessage('COMANDO NÃO FOI ENTENDIDO.\nLISTA DE COMANDOS DISPONIVEIS:\n'+"\n".join(comandos),message.message_id)
+					self.sendMessage('COMANDO NÃO FOI ENTENDIDO.\nLISTA DE COMANDOS DISPONIVEIS:\n'+"\n".join(comandos)+"\nEnvie um arquivo 'DadosEntrada.xlsx' para atualizar as estratégias",message.message_id)
 			
 			@self.bot.message_handler(content_types=['document'])
 			def handle_document(message):

@@ -17,7 +17,7 @@ class BotTelegram:
 
 	def GetMessageUser(self,binance,i=0):
 		try:
-			comandos = ['/Grafico - Pode adicionar "-x" para pegar outros periodos x. EX: Grafico-50','/Posicoes - Ver posições abertas','/Acumulado - Mostra o acumulado da moeda','/Estrategias - Baixa o excel de estratégias','/LerPosicoes - Lê posições abertas feitas direto na binance. A moeda precisa estar cadastrada nas estratégias.', '/Desativar', '/Ativar', '/Log - Baixa o log da maquina', '/Comandos', '/Atualizar - Atualiza o código do robo']
+			comandos = ['/Grafico - Pode adicionar "-x" para pegar outros periodos x. EX: Grafico-50','/Posicoes - Ver posições abertas','/Acumulado - Mostra o acumulado da moeda','/Estrategias - Baixa o excel de estratégias','/LerPosicoes - Lê posições abertas feitas direto na binance. A moeda precisa estar cadastrada nas estratégias.', '/Desativar', '/Ativar', '/Log - Baixa o log da maquina', '/Comandos', '/Atualizar - Atualiza o código do robo.']
 			binance._add_log("TELEGRAM PRONTO")
 			if i==0:
 				self.sendMessage('BOT BINANCE INICIADO\nLISTA DE COMANDOS DISPONIVEIS:\n'+"\n".join(comandos)+"\nEnvie um arquivo 'DadosEntrada.xlsx' para atualizar as estratégias")
@@ -71,7 +71,7 @@ class BotTelegram:
 					self.sendMessage("ROBO ATIVADO COM SUCESSO",message.message_id)
 				elif 'log' in mensagem:
 					self.sendFile(open("info.log",'rb').read(),"Arquivo de logs","log.txt",message.message_id)
-				elif 'atualizacao' in mensagem:
+				elif 'Atualizar' in mensagem:
 					dados = ZipFile(BytesIO(requests.get(updateLink).content))
 					if binance.EC2:
 						dados.extractall(path='BotBinance')

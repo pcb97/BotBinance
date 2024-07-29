@@ -93,6 +93,8 @@ class BotTelegram:
 				filename = message.document.file_name
 				if filename=='DadosEntrada.xlsx':
 					downloaded_file = self.bot.download_file(file_path)
+					if binance.EC2:
+						filename = "BotBinance/"+filename
 					with open(os.path.join(filename), 'wb') as new_file:
 						new_file.write(downloaded_file)
 					binance._add_log("Arquivo de estratégias atualizado.",message.message_id)

@@ -481,6 +481,7 @@ class BinanceClient:
 
     def rodar(self,ignoreTelegram=False):
         self._add_log("="*100)
+        self._add_log(f"EC2: {self.EC2})
         self._add_log("Binance Futures Client successfully initialized")
         self.executar = True
         self.lerDadosEntrada()

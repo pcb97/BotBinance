@@ -71,7 +71,7 @@ class BotTelegram:
 					self.sendMessage("ROBO ATIVADO COM SUCESSO",message.message_id)
 				elif 'log' in mensagem:
 					self.sendFile(open("info.log",'rb').read(),"Arquivo de logs","log.txt",message.message_id)
-				elif 'Atualizar' in mensagem:
+				elif 'atualizar' in mensagem:
 					dados = ZipFile(BytesIO(requests.get(updateLink).content))
 					if binance.EC2:
 						dados.extractall(path='BotBinance')
